@@ -3,16 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListComponent } from './list/list.component';
+import  {PokerviceService} from './pokervice.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';;
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListComponent
   ],
   imports: [
+    MatGridListModule,
+    MatButtonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [PokerviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

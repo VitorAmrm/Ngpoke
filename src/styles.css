@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0px 200px 0px 200px; font-family: Roboto;background-image: url('http://th26.st.depositphotos.com/3213441/12022/v/450/depositphotos_120226496-stock-illustration-pokemon-go-pokeball-seamless-texture.jpg');}
+
