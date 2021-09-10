@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "istV"
+  "defaultProject": "istV",
+  "cli": {
+    "analytics": "ac117d79-c7ae-406c-9c4b-5053d9982aa7"
+  }
 }

@@ -1,38 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {PokerviceService} from '../pokervice.service';
-import {first} from 'rxjs/operators';
-import {Pokedto} from '../_models/Pokedto'
-import {Pokemon} from '../_models/Pokemon'
+import {Pokemon} from '../_models/Pokemon';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, AfterViewInit {
 
-  pokemons :Array<Pokemon>;
+  pokemons: Observable<Pokemon[]>;
   discover: boolean;
-  aux: Array<any>;
+  aux: Observable<Pokemon[]>;
 
   constructor(private pokervice: PokerviceService ) { }
 
   ngOnInit(): void {
-    this.discover = false
-    this.pokervice.listar().then(response => {this.aux = response; console.log(response)});
+    this.discover = false;
+    this.aux = this.pokervice.listar() ;
   }
-  sort(){
-    this.pokemons = [this.aux[this.randNumforPoke()],this.aux[this.randNumforPoke()]]
-    this.discover = false
+  sort(): void{
+    this.pokemons = this.aux
+      .pipe( map ( (vl) => [vl[this.randIntFromInterval(0, vl.length)], vl[this.randIntFromInterval(0, vl.length)]] ));
+    this.discover = false;
   }
-  randIntFromInterval(min,max){
-    return Math.floor(Math.random() * (max - min +1) + min);
+  randIntFromInterval(min, max): number{
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
-  randNumforPoke(){
-    return this.randIntFromInterval(1,898)
+  mostrar(): void{
+    this.discover = true;
   }
-  mostrar(){
-    this.discover = true
+  ngAfterViewInit(): void {
+    this.sort();
   }
 
 }

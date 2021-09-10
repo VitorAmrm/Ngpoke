@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Pageable} from './_models/Pageable'
-import {Pokedto} from './_models/Pokedto'
-import { Observable, pipe } from 'rxjs';
+import {Observable} from 'rxjs';
+import {Pokemon} from './_models/Pokemon';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokerviceService {
-  private url = "https://raw.githubusercontent.com/msikma/pokesprite/master/data/pokemon.json";
-  public offset = 1
+  private url = 'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/pokedex.json';
   constructor(private http: HttpClient) {
-    
+
   }
 
-  r
-  listar(){
-    return this.http.get<Array<any>>(`${this.url}`).toPromise()  
-    //const pokearr = [response[this.randNumforPoke()],response[this.randNumforPoke()]]
-    
+  listar(): Observable<Pokemon[]>{
+    return this.http.get<Pokemon[]>(`${this.url}`);
+
   }
- 
+
 }

@@ -1,22 +1,25 @@
 <div class="centralized-container">
-    <h1 id="title"><strong>Sorteador de Pokemon</strong></h1>
+    <h1 id="title"><strong>Sorteador de Pokémon</strong></h1>
     <h4 id="subtitle"><strong> Temos que pegar, eu sei</strong></h4>
     <div>
-        <mat-grid-list cols="2" rowHeight="1:1" gutterSize="10px">
-            <mat-grid-tile *ngFor="let p of pokemons">
-                <div class="item">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/{{p.idx}}.png" alt="encrypted" height="400px" weight="400px"/>
-                    <div class="num-name">
-                        <p *ngIf="discover"><strong>{{p.name.eng}}</strong></p>
-                    </div>
-                </div>
-            </mat-grid-tile>
-        </mat-grid-list>
+      <div class="content" fxLayout="row" fxLayout.md="column" fxLayout.xs="column" fxLayout.sm="column" fxFlexFill>
+        <div  fxFlex="50"  fxFlex.md="20" *ngFor="let p of pokemons | async" class="item">
+          <div class="item-list">
+            <img id="pokeimg" [src]="p.hires" alt="encrypted"/>
+            <div class="footer">
+              <div class="num-name">
+                <h2 *ngIf="discover"><strong>{{p.name.english}}</strong></h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
         <div class="buttons">
             <button id="first" mat-raised-button  (click)="sort()" >Sortear</button>
-            <button id="second" mat-raised-button  (click)="mostrar()" >Prova dos 9</button>
+            <button id="second" mat-raised-button  (click)="mostrar()" >Descobrir</button>
         </div>
     </div>
-    
+
 </div>
 

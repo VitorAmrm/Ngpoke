@@ -1,7 +1,15 @@
 export class Pokemon{
-    id: number
-    name: string
-    img: string
+    id: number;
+    name: NameDto;
+    sprite: string;
+    thumbnail: string;
+    hires: string;
 
-    constructor(){}
+
+}
+interface NameDto {
+  english: string;
+  japanese: string;
+  chinese: string;
+  french: string;
 }
