@@ -5,7 +5,7 @@
       <div class="content" fxLayout="row" fxLayout.md="column" fxLayout.xs="column" fxLayout.sm="column" fxFlexFill>
         <div  fxFlex="50"  fxFlex.md="20" *ngFor="let p of pokemons | async" class="item">
           <div class="item-list">
-            <img id="pokeimg" [src]="p.hires" alt="encrypted"/>
+            <img id="pokeimg" [src]="p.image.hires" alt="encrypted"/>
             <div class="footer">
               <div class="num-name">
                 <h2 *ngIf="discover"><strong>{{p.name.english}}</strong></h2>
